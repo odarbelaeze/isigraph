@@ -30,7 +30,7 @@ Inputs a set of isi files into a neo4j database, handling nodes and relations.
 Features
 --------
 
-* TODO
+* Idempotent loading of files.
 
 Credits
 -------

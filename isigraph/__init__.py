@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """Top-level package for ISI to neo4j."""
 
 __author__ = """Oscar Arbeláez"""
