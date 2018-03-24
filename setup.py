@@ -11,6 +11,7 @@ with open('HISTORY.rst') as history_file:
 requirements = [
     'Click>=6.0',
     'wostools>=0.1.1,<0.2',
+    'neo4j-driver>=1.5.3,<1.6',
 ]
 
 setup_requirements = ['pytest-runner', ]

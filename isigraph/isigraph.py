@@ -6,6 +6,8 @@ There are some graphs, then we load them.
 
 import wostools
 
+from isigraph.store import add_articles
+
 
 def prepend(text: str, prefix: str):
     """Prepend a prefix to a string if the string exists.
@@ -14,7 +16,10 @@ def prepend(text: str, prefix: str):
         return text
     return prefix + text
 
+
 def get_label_for(article: wostools.Article):
+    """Get a label for an article, this is what a citation's going to be.
+    """
     author = article._data.get('AU', [''])[0].replace(',', '')
     year = article._data.get('PY', [''])[0]
     journal = article._data.get('J9', [''])[0]
@@ -34,4 +39,9 @@ def get_label_for(article: wostools.Article):
 def read_files(filenames: list):
     collection = wostools.CollectionLazy(*filenames)
     for article in collection.articles:
-        print(get_label_for(article))
+        label = get_label_for(article)
+        yield label, article
+
+
+def store(filenames: list):
+    add_articles(read_files(filenames), 'bolt://localhost:7687')

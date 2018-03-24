@@ -1,7 +1,8 @@
 """Console script for isigraph."""
 import sys
 import click
-from isigraph.isigraph import read_files
+
+from isigraph.isigraph import store
 
 
 @click.command()
@@ -11,7 +12,7 @@ def main(files: list):
 
     Load your isi files in your neo4j database.
     """
-    read_files(files)
+    store(files)
     return 0
 
 
